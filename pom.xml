@@ -49,7 +49,7 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <!-- WARNING: add release scope for 1.9 and older versions -->
-                    <!--                    <release>${java.version}</release>-->
+<!--                    <release>${java.version}</release>-->
                 </configuration>
             </plugin>
             <!-- endregion -->
@@ -76,7 +76,7 @@
                 </configuration>
             </plugin>
             <!-- endregion -->
-            <!-- region Allows you to execute mvn exec:java to run the generated JAR -->
+            <!-- region Forces the app to be executed when using mvn package -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -84,6 +84,14 @@
                 <configuration>
                     <mainClass>${main.class}</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!-- endregion -->
         </plugins>
